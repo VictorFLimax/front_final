@@ -1,0 +1,37 @@
+<div class="container">
+  <mat-card class="card">
+    <div class="cadastro-container">
+      <h2>Nova Sala</h2>
+      <form [formGroup]="formGroup" (ngSubmit)="save()" class="formulario_cadastro">
+
+
+        <mat-form-field>
+          <mat-label>Disciplina</mat-label>
+          <input matInput formControlName="disciplina" type="text" required />
+          <mat-error *ngIf="formGroup.get('disciplina')?.invalid && formGroup.get('disciplina')?.touched">
+            Disciplina é obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Assunto</mat-label>
+          <input matInput formControlName="assunto" type="text" required />
+          <mat-error *ngIf="formGroup.get('assunto')?.invalid && formGroup.get('assunto')?.touched">
+            Assunto é obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Data da Aula</mat-label>
+          <input matInput formControlName="data_aula" type="date" required />
+          <mat-error *ngIf="formGroup.get('data_aula')?.invalid && formGroup.get('data_aula')?.touched">
+            Data de Aula é obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" type="submit" [disabled]="formGroup.invalid">Cadastrar</button>
+        <button mat-flat-button color="accent" (click)="goSalaList()">Voltar</button>
+      </form>
+    </div>
+  </mat-card>
+</div>

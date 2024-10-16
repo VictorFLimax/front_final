@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  padding: 50px;
+  width: 400px;
+}
+
+.cadastro-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario_cadastro {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  margin-top: 20px;
+  text-align: center;
+}

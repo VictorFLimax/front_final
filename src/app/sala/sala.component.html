@@ -1,0 +1,36 @@
+<div class="pesquisa">
+  <h2>Lista de Salas</h2>
+  <button mat-raised-button (click)="goSalaItem()">Novo</button>
+</div>
+
+<div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID</th>
+      <td mat-cell *matCellDef="let element"> {{ element.id }}</td>
+    </ng-container>
+    <ng-container matColumnDef="instituicao">
+      <th mat-header-cell *matHeaderCellDef> Instituicao</th>
+      <td mat-cell *matCellDef="let element"> {{ element.instituicao }}</td>
+    </ng-container>
+    <ng-container matColumnDef="disciplina">
+      <th mat-header-cell *matHeaderCellDef> Disciplina</th>
+      <td mat-cell *matCellDef="let element"> {{ element.disciplina }}</td>
+    </ng-container>
+    <ng-container matColumnDef="conteudo">
+      <th mat-header-cell *matHeaderCellDef> Conteudo</th>
+      <td mat-cell *matCellDef="let element"> {{ element.conteudo }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <mat-chip class="custom-chip" selected (click)="entrar(element.id)">
+          <p>Entrar</p>
+        </mat-chip>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
