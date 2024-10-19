@@ -4,6 +4,13 @@
       <h2>Nova Sala</h2>
       <form [formGroup]="formGroup" (ngSubmit)="save()" class="formulario_cadastro">
 
+        <mat-form-field>
+          <mat-label>Instituição</mat-label>
+          <input matInput formControlName="instituicao" type="text" required />
+          <mat-error *ngIf="formGroup.get('instituicao')?.invalid && formGroup.get('instituicao')?.touched">
+            Instituição é obrigatório
+          </mat-error>
+        </mat-form-field>
 
         <mat-form-field>
           <mat-label>Disciplina</mat-label>
@@ -14,10 +21,10 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Assunto</mat-label>
-          <input matInput formControlName="assunto" type="text" required />
-          <mat-error *ngIf="formGroup.get('assunto')?.invalid && formGroup.get('assunto')?.touched">
-            Assunto é obrigatório
+          <mat-label>Conteudo</mat-label>
+          <input matInput formControlName="conteudo" type="text" required />
+          <mat-error *ngIf="formGroup.get('conteudo')?.invalid && formGroup.get('conteudo')?.touched">
+            Conteúdo é obrigatório
           </mat-error>
         </mat-form-field>
 
@@ -25,7 +32,7 @@
           <mat-label>Data da Aula</mat-label>
           <input matInput formControlName="data_aula" type="date" required />
           <mat-error *ngIf="formGroup.get('data_aula')?.invalid && formGroup.get('data_aula')?.touched">
-            Data de Aula é obrigatório
+            Data de Aula é obrigatória
           </mat-error>
         </mat-form-field>
 

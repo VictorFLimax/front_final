@@ -1,6 +1,8 @@
 <div class="pesquisa">
   <h2>Lista de Salas</h2>
-  <button mat-raised-button (click)="goSalaItem()">Novo</button>
+  @if (authService?.usuario?.perfil === Perfil.INSTRUTOR) {
+    <button mat-raised-button (click)="goSalaItem()">Novo</button>
+  }
 </div>
 
 <div>

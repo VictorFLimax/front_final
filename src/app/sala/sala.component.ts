@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
-import { Router } from '@angular/router';
-import { Sala } from '../models/sala';
-import { SalaService } from '../services/sala.service';
+import {Component, OnInit} from '@angular/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
+import {Router} from '@angular/router';
+import {Sala} from '../models/sala';
+import {SalaService} from '../services/sala.service';
 import {MatChip, MatChipsModule} from '@angular/material/chips';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
+import {AuthService} from '../services/auth.service';
+import {Perfil} from '../models/usuario';
 
 @Component({
   selector: 'app-sala',
@@ -26,8 +28,10 @@ import { CommonModule } from '@angular/common';
 export class SalaComponent implements OnInit {
   displayedColumns: string[] = ['id', 'instituicao', 'disciplina', 'conteudo', 'actions']; // Adicionei 'actions' para o botão
   dataSource: Sala[] = [];
+  Perfil = Perfil;
 
-  constructor(private salaService: SalaService, private router: Router) {}
+  constructor(private salaService: SalaService, private router: Router, public authService: AuthService) {
+  }
 
   ngOnInit() {
     // Para testes, vamos adicionar uma linha de teste manualmente
@@ -40,7 +44,7 @@ export class SalaComponent implements OnInit {
     //   } // Linha de teste
     // ];
     // Se você quiser carregar dados da API, pode descomentar a linha abaixo
-     this.getAll();
+    this.getAll();
   }
 
   getAll() {

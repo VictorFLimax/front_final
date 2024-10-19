@@ -4,19 +4,18 @@
       <h2>Cadastro</h2>
       <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="formulario_cadastro">
 
-
         <mat-form-field>
           <mat-label>Tipo de Usuário</mat-label>
-          <mat-select>
+          <mat-select formControlName="perfil">
             <mat-option value="" disabled selected>Selecione</mat-option>
-            <mat-option value="professor">Professor</mat-option>
-            <mat-option value="aluno">Aluno</mat-option>
+            <mat-option value="I">Professor</mat-option>
+            <mat-option value="P">Aluno</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Email</mat-label>
-          <input matInput formControlName="email" type="email" required />
+          <input matInput formControlName="username" type="email" required />
         </mat-form-field>
 
         <mat-form-field>
@@ -24,10 +23,10 @@
           <input matInput formControlName="password" type="password" required />
         </mat-form-field>
 
-        <button mat-flat-button  type="submit">Cadastrar</button>
+        <button mat-flat-button type="submit">Cadastrar</button>
       </form>
       <p>
-        Já tem cadastro? <a [routerLink]="['/login']">Entrar aqui</a>
+        Já tem cadastro? <a mat-button [routerLink]="['/login']">Entrar aqui</a>
       </p>
     </div>
   </mat-card>

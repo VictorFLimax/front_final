@@ -4,10 +4,12 @@ import { MainComponent } from './main/main.component';
 import { SalaComponent } from './sala/sala.component';
 import { SalaItemComponent } from './sala/sala-item/sala-item.component';
 import {AulaComponent} from './aula/aula.component';
+import {CadastroComponent} from './cadastro/cadastro.component';
 
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  {path: 'cadastro', component: CadastroComponent},
 
 
   {

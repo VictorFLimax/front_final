@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import {MatOption} from '@angular/material/core';
-import {MatSelect, MatSelectModule} from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -18,7 +19,7 @@ import {MatSelect, MatSelectModule} from '@angular/material/select';
     MatCardModule,
     RouterLink,
     ReactiveFormsModule,
-    MatOption,
+    MatOptionModule,
     MatSelectModule
   ],
   templateUrl: './cadastro.component.html',
@@ -28,12 +29,13 @@ export class CadastroComponent implements OnInit {
   userForm: FormGroup;
   userData: any = {};
 
+  constructor(private router: Router, private authService: AuthService) {}
+
   ngOnInit(): void {
     this.userForm = new FormGroup({
-      usuario: new FormControl('', [Validators.required]),
-      cpf: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      username: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
+      perfil: new FormControl('', [Validators.required]),
     });
   }
 
@@ -42,13 +44,20 @@ export class CadastroComponent implements OnInit {
       const formValues = this.userForm.getRawValue();
       Object.assign(this.userData, formValues);
       console.log('User Data:', this.userData);
+      this.cadastro();
+    } else {
+      console.log('Formulário inválido');
     }
   }
 
-  constructor(private router: Router) {}
-
   cadastro() {
-    this.router.navigate(['']).then();
+    this.authService.register(this.userData).subscribe({
+      next: (response) => {
 
+      },
+      error: (error) => {
+        console.log('Erro no cadastro:', error);
+      }
+    });
   }
 }

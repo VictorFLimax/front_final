@@ -1,12 +1,17 @@
-<!--<div *ngIf="sala">-->
-<!--  <h1>Detalhes da Sala</h1>-->
-<!--  <p>ID: {{ sala.id }}</p>-->
-<!--  <p>Nome: {{ sala.sala }}</p>-->
-<!--  <p>Disciplina: {{ sala.disciplina }}</p>-->
-<!--  <p>Assunto: {{ sala.assunto }}</p>-->
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{ sala?.disciplina }}</mat-card-title>
+    <mat-card-subtitle>{{ sala?.conteudo }}</mat-card-subtitle>
+  </mat-card-header>
 
-<!--</div>-->
-
-<!--<div *ngIf="!sala">-->
-<!--  <p>Carregando...</p>-->
-<!--</div>-->
+  <mat-card-content>
+    <p>
+      {{ sala?.assunto }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
