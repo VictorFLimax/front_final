@@ -1,36 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { SalaService } from '../services/sala.service';
-import { Sala } from '../models/sala';
-import {MatCard, MatCardContent, MatCardModule} from '@angular/material/card';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms'; // Importar FormsModule
+import { MatCardModule } from '@angular/material/card'; // Importar MatCardModule
+import { MatFormFieldModule } from '@angular/material/form-field'; // Importar MatFormFieldModule
+import { MatInputModule } from '@angular/material/input'; // Importar MatInputModule
+import { MatButtonModule } from '@angular/material/button';
+import {CommonModule} from '@angular/common'; // Importar MatButtonModule
 
 @Component({
   selector: 'app-aula',
   templateUrl: './aula.component.html',
   standalone: true,
+  styleUrls: ['./aula.component.css'],
   imports: [
-    MatCardContent,
-    MatCardModule
-  ],
-  styleUrls: ['./aula.component.css']
+    FormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    CommonModule,
+  ]
 })
-export class AulaComponent implements OnInit {
-  salaId: string | null = null;
-  sala: Sala | undefined;
+export class AulaComponent {
+  disciplina: string = 'Nome da Disciplina';
+  conteudo: string = 'Conteúdo do Curso';
+  mensagem: string = '';
+  mensagensEnviadas: string[] = [];
 
-  constructor(private route: ActivatedRoute, private salaService: SalaService) {}
-
-  ngOnInit() {
-    this.salaId = this.route.snapshot.paramMap.get('id');
-
-    if (this.salaId) {
-      this.getSalaDetail(this.salaId);
+  enviarMensagem() {
+    if (this.mensagem.trim()) {
+      console.log('Mensagem enviada:', this.mensagem);
+      this.mensagensEnviadas.push(this.mensagem);
+      this.mensagem = '';
     }
-  }
-
-  getSalaDetail(id: string) {
-    this.salaService.getById(id).subscribe(response => {
-      this.sala = response;
-    });
   }
 }

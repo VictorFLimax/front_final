@@ -26,7 +26,7 @@ import {Perfil} from '../models/usuario';
   styleUrls: ['./sala.component.css']
 })
 export class SalaComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'instituicao', 'disciplina', 'conteudo', 'actions']; // Adicionei 'actions' para o botão
+  displayedColumns: string[] = ['id', 'instituicao', 'disciplina', 'conteudo', 'actions'];
   dataSource: Sala[] = [];
   Perfil = Perfil;
 
@@ -34,17 +34,18 @@ export class SalaComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Para testes, vamos adicionar uma linha de teste manualmente
-    // this.dataSource = [
-    //   {
-    //     id: 1, sala: 'Sala 101', disciplina: 'Matemática', assunto: 'Álgebra',
-    //     created_at: undefined,
-    //     modified_at: undefined,
-    //     active: false
-    //   } // Linha de teste
-    // ];
-    // Se você quiser carregar dados da API, pode descomentar a linha abaixo
-    this.getAll();
+
+    this.dataSource = [
+      {
+        id: 1, instituicao: 'senador', disciplina: 'Matemática', conteudo: 'Álgebra',
+        assunto: '',
+        created_at: undefined,
+        modified_at: undefined,
+        active: false
+      }
+    ];
+
+    //this.getAll();
   }
 
   getAll() {

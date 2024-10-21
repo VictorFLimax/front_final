@@ -5,7 +5,6 @@ import {ModelBase} from './model-base';
 
 
 export class Comentario extends ModelBase{
-  dataComentario: Date;
   texto: string;
   tipo: 'P' | 'O';
   aula: Aula

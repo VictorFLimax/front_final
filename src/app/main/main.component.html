@@ -1,22 +1,32 @@
 <div class="container">
   <mat-toolbar>
-    <button className="botao_menu" (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <button class="botao_menu" (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
     <span>Sala Virtual</span>
     <span class="example-spacer"></span>
-
   </mat-toolbar>
 
   <mat-drawer-container autosize>
     <mat-drawer #drawer mode="side">
       <ul>
-        <li><a routerLink="/sala">Sala</a></li>
+        <li>
+          <a routerLink="#" (click)="navegarParaSala()">Sala</a>
+        </li>
       </ul>
     </mat-drawer>
+
+    <div *ngIf="exibirImagem" class="content-container">
+      <img src="/salaVirtual.jfif" alt="angula" />
+      <div class="descricao">
+        <h3>Sala Virtual</h3>
+        <p>Aqui você pode descrever como o projeto funciona e para que ele serve.</p>
+      </div>
+    </div>
 
     <div class="content">
       <router-outlet></router-outlet>
     </div>
   </mat-drawer-container>
 </div>
+

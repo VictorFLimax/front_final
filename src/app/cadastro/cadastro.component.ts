@@ -51,7 +51,7 @@ export class CadastroComponent implements OnInit {
   }
 
   cadastro() {
-    this.authService.register(this.userData).subscribe({
+    this.authService.cadastro(this.userData).subscribe({
       next: (response) => {
 
       },
