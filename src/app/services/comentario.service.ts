@@ -2,12 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Comentario} from '../models/comentario';
+import {Sala} from '../models/sala';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ComentarioService {
-  url: string = "";
+export class ComentarioService  {
+  url: string = "http://localhost:8000/api/caderno/comentario/";
 
   constructor(private http: HttpClient) {
 

@@ -1,9 +1,3 @@
-<div class="pesquisa">
-  <h2>Lista de Salas</h2>
-  @if (authService?.usuario?.perfil === Perfil.INSTRUTOR) {
-    <button mat-raised-button (click)="goSalaItem()">Novo</button>
-  }
-</div>
 
 <div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

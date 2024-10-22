@@ -6,6 +6,7 @@ import { MatIconButton } from '@angular/material/button';
 import { MatDrawerContainer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatListItem, MatListModule } from '@angular/material/list';
 import { MatTabGroup, MatTab } from '@angular/material/tabs';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-main',
@@ -20,12 +21,15 @@ import { MatTabGroup, MatTab } from '@angular/material/tabs';
     MatListItem,
     RouterLink,
     MatTabGroup,
-    MatTab
+    MatTab,
+    NgIf
   ],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  exibirImagem: boolean = true;
+
   constructor(private router: Router) {}
 
   ngOnInit() {
@@ -34,5 +38,9 @@ export class MainComponent implements OnInit {
       this.router.navigate(['login']).then();
     }
   }
-}
 
+  navegarParaSala() {
+    this.exibirImagem = false;
+    this.router.navigate(['/sala']);
+  }
+}

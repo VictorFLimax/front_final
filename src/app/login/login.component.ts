@@ -7,6 +7,7 @@ import {Router, RouterLink} from '@angular/router';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {User} from '../models/user';
 import {AuthService} from '../services/auth.service';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ import {AuthService} from '../services/auth.service';
     MatCardModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterLink
+    RouterLink,
+    NgIf
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'

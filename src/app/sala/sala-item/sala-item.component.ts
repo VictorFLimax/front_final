@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SalaService } from '../../services/sala.service';
+import { AulaService } from '../../services/aula.service';
 import { Sala } from '../../models/sala';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -33,7 +33,7 @@ export class SalaItemComponent implements OnInit {
   sala: Sala = new Sala();
 
   constructor(private router: Router,
-              private salaService: SalaService,
+              private salaService: AulaService,
               private formBuilder: FormBuilder) {}
 
   ngOnInit() {

@@ -9,14 +9,14 @@ import {CadastroComponent} from './cadastro/cadastro.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  {path: 'cadastro', component: CadastroComponent},
+  { path: 'cadastro', component: CadastroComponent },
 
 
   {
     path: '', component: MainComponent, children: [
       { path: 'sala', component: SalaComponent },
       { path: 'sala/:action', component: SalaItemComponent },
-      { path: 'aula/:id', component: AulaComponent },
+      { path: 'sala/:id', component: AulaComponent },
     ]
   },
 

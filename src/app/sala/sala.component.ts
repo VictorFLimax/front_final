@@ -4,8 +4,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {Router} from '@angular/router';
-import {Sala} from '../models/sala';
-import {SalaService} from '../services/sala.service';
+import {Aula} from '../models/aula';
+import {AulaService} from '../services/aula.service';
 import {MatChip, MatChipsModule} from '@angular/material/chips';
 import {CommonModule} from '@angular/common';
 import {AuthService} from '../services/auth.service';
@@ -26,24 +26,14 @@ import {Perfil} from '../models/usuario';
   styleUrls: ['./sala.component.css']
 })
 export class SalaComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'instituicao', 'disciplina', 'conteudo', 'actions']; // Adicionei 'actions' para o botão
-  dataSource: Sala[] = [];
+  displayedColumns: string[] = ['id', 'instituicao', 'disciplina', 'conteudo', 'actions'];
+  dataSource: Aula[] = [];
   Perfil = Perfil;
 
-  constructor(private salaService: SalaService, private router: Router, public authService: AuthService) {
+  constructor(private salaService: AulaService, private router: Router, public authService: AuthService) {
   }
 
   ngOnInit() {
-    // Para testes, vamos adicionar uma linha de teste manualmente
-    // this.dataSource = [
-    //   {
-    //     id: 1, sala: 'Sala 101', disciplina: 'Matemática', assunto: 'Álgebra',
-    //     created_at: undefined,
-    //     modified_at: undefined,
-    //     active: false
-    //   } // Linha de teste
-    // ];
-    // Se você quiser carregar dados da API, pode descomentar a linha abaixo
     this.getAll();
   }
 
