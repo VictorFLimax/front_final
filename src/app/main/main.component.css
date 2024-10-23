@@ -45,8 +45,8 @@ a {
 }
 
 img {
-  margin: 20px;
-  width: 600px;
+  margin-top: -200px;
+  width: 500px;
   border-radius: 10px;
 }
 
@@ -58,9 +58,15 @@ img {
   flex-direction: row;
 }
 .descricao{
-  margin-top: -500px;
   display: flex;
   flex-direction: column;
+  height: 900px;
+  width: 600px;
 
   align-items: center;
+}
+.projeto{
+  margin: 5px;
+  height: 900px;
+  width: 600px;
 }

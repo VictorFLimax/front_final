@@ -1,65 +1,53 @@
 import {Component, OnInit} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import {CommonModule} from '@angular/common';
-import {Comentario} from '../models/comentario';
-import {AulaService} from '../services/aula.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {AuthService} from '../services/auth.service';
-import {ComentarioService} from '../services/comentario.service';
+import {MatTableModule} from '@angular/material/table';
+import {Router} from '@angular/router';
 import {Aula} from '../models/aula';
+import {AulaService} from '../services/aula.service';
+import {MatChip, MatChipsModule} from '@angular/material/chips';
+import {CommonModule} from '@angular/common';
+import {AuthService} from '../services/auth.service';
+import {Perfil} from '../models/usuario';
 
 @Component({
   selector: 'app-aula',
-  templateUrl: './aula.component.html',
   standalone: true,
-  styleUrls: ['./aula.component.css'],
   imports: [
-    FormsModule,
-    MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    CommonModule,
-  ]
+    MatTableModule,
+    MatChipsModule,
+    CommonModule
+  ],
+  templateUrl: './aula.component.html',
+  styleUrls: ['./aula.component.css']
 })
 export class AulaComponent implements OnInit {
-  aula: Aula = new Aula()
+  displayedColumns: string[] = ['id', 'instituicao', 'disciplina', 'conteudo', 'actions'];
+  dataSource: Aula[] = [];
+  Perfil = Perfil;
 
-  constructor(private comentarioService: ComentarioService, private activatedRoute: ActivatedRoute, public aulaService: AulaService) {
+  constructor(private aulaService: AulaService, private router: Router, public authService: AuthService) {
   }
 
   ngOnInit() {
-    let id = this.activatedRoute.snapshot.params['id'];
-    if (id) {
-      this.getById(id)
-
-    }
+    this.getAll();
   }
 
-  getById(id: number) {
-    this.aulaService.clearParams();
-    this.aulaService.addParam('expand', 'comentarios');
-
-    this.aulaService.getById(id).subscribe(response => {
-      this.aula = response;
-    })
+  getAll() {
+    this.aulaService.getAll().subscribe(response => {
+      this.dataSource = response;
+    });
   }
 
-  // getAll() {
-  //   this.dataSource.getAll().subscribe(response => {
-  //     this.dataSource = response;
-  //   });
-  // }
+  goSalaItem() {
+    this.router.navigate(['aula/new']).then();
+  }
 
-  enviarMensagem() {
-    // if (this.mensagem.trim()) {
-    //   console.log('Mensagem enviada:', this.mensagem);
-    //   this.mensagensEnviadas.push(this.mensagem);
-    //   this.mensagem = '';
-    // }
+  entrar(id: string) {
+    this.router.navigate([`comentario/${id}`]).then();
   }
 }

@@ -41,6 +41,6 @@ export class MainComponent implements OnInit {
 
   navegarParaSala() {
     this.exibirImagem = false;
-    this.router.navigate(['/sala']);
+    this.router.navigate(['/aula']).then( );
   }
 }

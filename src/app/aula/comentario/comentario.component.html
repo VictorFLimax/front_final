@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-header>
+
+    <mat-card-title>{{ aula.disciplina }}</mat-card-title>
+    <mat-card-subtitle>{{ aula.conteudo }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content class="chat-container">
+        <div class="mensagens">
+          @for (c of aula.comentarios; track c.id) {
+            <div
+              class="mensagem-balao"
+              [ngClass]="{ 'mensagem-enviada': true }">
+              <p>{{ c.texto }}</p>
+            </div>
+          }
+        </div>
+        <div *ngFor="let mensagem of mensagensEnviadas">
+          <div class="mensagem-balao mensagem-enviada">
+        <p>{{ mensagem }}</p>
+          </div>
+        </div>
+
+
+
+    <div class="entrada-mensagem">
+                  <mat-form-field appearance="fill" class="input-mensagem">
+                    <mat-label>Mensagem</mat-label>
+                    <input
+                      matInput
+                      [(ngModel)]="mensagem"
+                      placeholder="Digite sua mensagem aqui..."
+                    />
+                  </mat-form-field>
+      <button mat-button (click)="enviarMensagem()">
+        <p>
+          ENVIAR
+        </p>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

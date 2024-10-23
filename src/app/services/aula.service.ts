@@ -30,7 +30,7 @@ export class AulaService {
   }
 
   getById(id: number): Observable<Aula> {
-    return this.http.get<Aula>(`${this.url}/${id}`);
+    return this.http.get<Aula>(`${this.url}${id}/`, {params: this.params});
   }
 
 
