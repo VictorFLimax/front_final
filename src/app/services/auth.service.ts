@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {environment} from '../../environment/environment';
 import {URLS} from '../urls';
+import {Usuario} from '../models/usuario';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  public usuario: any;
+  public usuario: Usuario;
 
   constructor(private http: HttpClient) {}
 
@@ -17,7 +18,7 @@ export class AuthService {
     return this.http.post(loginUrl, { username, password });
   }
 
-  cadastro(usuario: any): Observable<any> {
+  cadastro(usuario: Usuario): Observable<any> {
     const cadastroUrl = `${environment.url}${URLS.CADASTRO}`;
     return this.http.post(cadastroUrl, usuario);
   }

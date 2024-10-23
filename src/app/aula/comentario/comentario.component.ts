@@ -50,8 +50,7 @@ export class ComentarioComponent implements OnInit {
       this.aula = response;
     })
   }
-
-  enviarMensagem() {
+  save() {
     if (this.mensagem.trim()) {
       this.mensagensEnviadas.push(this.mensagem);
       this.mensagem = '';

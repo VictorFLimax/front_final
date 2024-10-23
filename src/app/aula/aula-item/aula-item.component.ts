@@ -32,6 +32,7 @@ import {Aula} from '../../models/aula';
 export class AulaItemComponent implements OnInit {
   formGroup: FormGroup;
   aula: Aula = new Aula();
+  currentDate: string;
 
   constructor(private router: Router,
               private aulaService: AulaService,
@@ -39,13 +40,19 @@ export class AulaItemComponent implements OnInit {
 
   ngOnInit() {
     this.createFormGroup();
+    this.setCurrentDate();
+  }
+  setCurrentDate() {
+    const today = new Date();
+    this.currentDate = today.toISOString().split('T')[0];
+    this.formGroup.get('data_aula')?.setValue(this.currentDate);
   }
 
   createFormGroup() {
     this.formGroup = this.formBuilder.group({
-      instituicao: ['', [Validators.required]], // Corrigido o nome do campo
+      instituicao: ['', [Validators.required]],
       disciplina: ['', [Validators.required]],
-      conteudo: ['', [Validators.required]], // Adicionado o campo conteúdo
+      conteudo: ['', [Validators.required]],
       data_aula: ['', [Validators.required]],
     });
   }

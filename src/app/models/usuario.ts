@@ -9,6 +9,6 @@ export class Usuario extends ModelBase {
   username: string;
   password: string;
   perfil: Perfil;
+  apelido: string;
   readonly token: string;
 }
-

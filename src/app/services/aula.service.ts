@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Aula} from '../models/aula';
+import {Comentario} from '../models/comentario';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,9 @@ export class AulaService {
 
   getById(id: number): Observable<Aula> {
     return this.http.get<Aula>(`${this.url}${id}/`, {params: this.params});
+  }
+  saveComentario(comentario: Comentario): Observable<Comentario> {
+    return this.http.post<Comentario>(this.url, comentario);
   }
 
 

@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthService } from '../services/auth.service';
+import {Usuario} from '../models/usuario';
 
 @Component({
   selector: 'app-cadastro',
@@ -27,12 +28,15 @@ import { AuthService } from '../services/auth.service';
 })
 export class CadastroComponent implements OnInit {
   userForm: FormGroup;
-  userData: any = {};
+  userData: Usuario;
+
 
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.userData = new Usuario();
     this.userForm = new FormGroup({
+      apelido: new FormControl('', [Validators.required]),
       username: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
       perfil: new FormControl('', [Validators.required]),
@@ -43,16 +47,21 @@ export class CadastroComponent implements OnInit {
     if (this.userForm.valid) {
       const formValues = this.userForm.getRawValue();
       Object.assign(this.userData, formValues);
-      console.log('User Data:', this.userData);
       this.cadastro();
+
+      this.router.navigate(['/login']).then();
+      this.userForm.reset();
+
     } else {
       console.log('Formulário inválido');
     }
   }
 
   cadastro() {
+    console.log('Dados a serem enviados:', this.userData);
     this.authService.cadastro(this.userData).subscribe({
       next: (response) => {
+        console.log('Usuário cadastrado com sucesso:', response);
 
       },
       error: (error) => {
